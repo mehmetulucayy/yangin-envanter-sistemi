@@ -1,8 +1,8 @@
 // src/app/[locale]/layout.tsx (İKİNCİ DÜZELTME DENEMESİ)
 
 import {NextIntlClientProvider} from 'next-intl';
+import {notFound} from 'next/navigation';
 import NavbarWrapper from '@/components/NavbarWrapper';
-import getMessages from '@/i18n/getMessages'; // Yeni fonksiyonu import edin
 import "../globals.css";
 
 export default async function LocaleLayout({
