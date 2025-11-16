@@ -1,16 +1,15 @@
+// src/i18n/request.ts
+import tr from '../messages/tr.json';
+import en from '../messages/en.json';
 import { getRequestConfig } from 'next-intl/server';
 
+const messagesMap = { tr, en };
+
 export default getRequestConfig(async ({ locale }) => {
-  let messages;
-  try {
-    messages = (await import(`../../i18n/messages/${locale}.json`)).default;
-  } catch (error) {
-    console.warn(`Dil dosyası bulunamadı: ${locale}, varsayılan Türkçe yüklendi.`);
-    messages = (await import('../messages/tr.json')).default;
-  }
+  const messages = messagesMap[locale] || tr;
 
   return {
-    locale: locale || 'tr', // ✅ Burada default locale belirt
+    locale: locale || 'tr',
     messages,
   };
 });
