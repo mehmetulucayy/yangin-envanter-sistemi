@@ -89,11 +89,19 @@ yangin-envater-sistemi/
 Ana Ekran
 Home
 
+public/screenshots/home.png
+
 Envanter Ekranları
 English	Türkçe
 
-	
+	public/screenshots/envanter-tr.png
+  public/screenshots/envanter-en.png
+
 Raporlama Ekranları
+
+public/screenshots/raporlama-tr.png
+public/screenshots/raporlama-en.png
+
 English	Türkçe
 
 --------------------------------------------------------------------------------------------------------------------------
