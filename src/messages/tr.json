@@ -1,0 +1,66 @@
+{
+  "navbar": {
+    "title": "Yangın Envanter Sistemi",
+    "home": "Ana Sayfa",
+    "inventory": "Envanter",
+    "reporting": "Raporlama"
+  },
+  "home": {
+    "title": "Yangın Envanter Sistemi",
+    "cards": {
+      "total": "Toplam Envanter",
+      "new": "Yeni",
+      "used": "Kullanılmış",
+      "maintenance": "Bakımda",
+      "unusable": "Kullanılamaz"
+    },
+    "upcoming": "Yaklaşan Bakımlar (30 Gün İçinde)",
+    "none": "Yaklaşan bakım gerektiren ekipman bulunmuyor."
+  },
+  "inventory": {
+    "title": "Envanter Yönetimi",
+    "addEquipment": "Yeni Ekipman Ekle",
+    "addButton": "Ekle",
+    "listTitle": "Envanter Listesi",
+    "noItems": "Henüz ekipman eklenmedi.",
+    "exportPDF": "Raporu Dışa Aktar (PDF)",
+    "fields": {
+      "tupadi": "Tüp Adı",
+      "marka": "Marka",
+      "model": "Model",
+      "seriNo": "Seri No",
+      "uretimYili": "Üretim Yılı",
+      "sonKullanmaTarihi": "Son Kullanma Tarihi",
+      "bulunduguYer": "Bulunduğu Yer"
+    },
+    "status": {
+      "new": "Yeni",
+      "used": "Kullanılmış",
+      "maintenance": "Bakımda",
+      "unusable": "Kullanılamaz"
+    }
+  },
+  "reporting": {
+    "title": "Raporlama",
+    "total": "Toplam Ekipman",
+    "chartTitle": "Durum Dağılımı",
+    "noData": "Henüz veri bulunmamaktadır.",
+    "exportPDF": "Raporu Dışa Aktar (PDF)",
+    "exportSuccess": "✅ PDF başarıyla indirildi (grafikler dahil).",
+    "statuses": {
+      "new": "Yeni",
+      "used": "Kullanılmış",
+      "maintenance": "Bakımda",
+      "unusable": "Kullanılamaz"
+    },
+    "charts": {
+      "addedPerMonth": "Aylara Göre Eklenen Ürünler",
+      "expiryTimeline": "Süre Sonu Dağılımı",
+      "statusDistribution": "Durum Dağılımı",
+      "brandDistribution": "Markaya Göre Dağılım",
+      "locationDistribution": "Bulunduğu Yere Göre Dağılım",
+      "upcomingExpiries": "Süresi Yaklaşan Ürünler"
+    }
+  },
+  "unknown": "Belirtilmemiş"
+}

@@ -1,26 +1,128 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 🌍 Genel arka plan ve yazı rengi */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-[#0B0E14] text-gray-100 font-sans antialiased;
+}
+
+/* 🧭 Navbar */
+nav {
+  @apply bg-gradient-to-r from-[#0D1117] to-[#111827] text-gray-200 shadow-md;
+}
+
+nav h1 {
+  @apply text-xl font-bold tracking-wide text-white;
+}
+
+nav a {
+  @apply transition-colors duration-300 px-4 py-1 hover:text-yellow-400;
+}
+
+nav .active {
+  @apply text-yellow-400 border-b-2 border-yellow-400 pb-1;
+}
+
+/* 📦 Kartlar */
+.card {
+  @apply bg-[#161B22] border border-gray-700 rounded-xl shadow-lg p-6;
+}
+
+/* 🧠 Başlıklar */
+h2, h3 {
+  @apply text-white font-semibold;
+}
+
+/* 🔘 Butonlar */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md transition-all duration-200 shadow;
+}
+
+.btn-warning {
+  @apply bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-3 py-1 rounded transition-all duration-200;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white font-semibold px-3 py-1 rounded transition-all duration-200;
+}
+
+/* 🧾 Tablo */
+table {
+  @apply w-full border-collapse rounded-xl overflow-hidden text-sm;
+}
+
+th {
+  @apply bg-[#1C2129] text-gray-300 font-semibold border border-gray-700 px-4 py-2;
+}
+
+td {
+  @apply border border-gray-700 px-4 py-2 text-gray-200;
+}
+
+tr:hover {
+  @apply bg-[#1F2630];
+}
+
+/* 🔲 Inputlar */
+input, select {
+  @apply bg-[#1C2129] text-gray-100 border border-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+/* ✨ Animasyonlu geçiş */
+* {
+  @apply transition-colors duration-200;
+}
+.input-field {
+  @apply bg-[#1C2129] text-gray-100 border border-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full;
+}
+
+.table-head {
+  @apply border border-gray-700 px-3 py-2 text-left text-xs uppercase tracking-wider;
+}
+
+.table-cell {
+  @apply border border-gray-700 px-3 py-2 text-gray-300;
+}
+/* Sayfa hizalamasını sabitle */
+body {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Dil farkı olsa da font genişliği farkını azalt */
+html[lang="tr"],
+html[lang="en"] {
+  letter-spacing: normal;
+  word-spacing: normal;
+  font-weight: 400;
+}
+
+/* Formlar ve kutular arasında sabit boşluk */
+input,
+select,
+button {
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+/* Form elemanları her dilde aynı ölçüde olsun */
+input,
+select {
+  min-width: 0;
+  flex: 1 1 auto;
+  font-size: 0.95rem;
+}
+
+/* Tarayıcı varsayılanlarını sıfırla */
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.8;
 }

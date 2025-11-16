@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🔥 Yangın Envanter Takip Sistemi
 
-## Getting Started
+Next.js + Tailwind CSS + i18n
 
-First, run the development server:
+Bu proje, kurum ve tesislerdeki yangın ekipmanlarının envanterini dijital olarak takip etmek, raporlamak ve çoklu dil desteği ile kullanıcı deneyimini geliştirmek için oluşturulmuş modern bir web uygulamasıdır.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js 13 App Router, TailwindCSS, TypeScript, i18n (TR/EN) ile geliştirilmiştir.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+--------------------------------------------------------------------------------------------------------------------------
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🚀 Özellikler
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Envanter Listeleme (En/Tr dil desteği)
 
-## Learn More
+Yangın ekipmanı veri yönetimi
 
-To learn more about Next.js, take a look at the following resources:
+Modern UI (Tailwind + Next.js)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Reporting Sayfası (Grafik bazlı)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sayfa bazlı çoklu dil desteği (i18n)
 
-## Deploy on Vercel
+Tamamen local çalışan demo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Dark tema tasarım
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+App Router yapısı (Next.js 13/14)
+
+--------------------------------------------------------------------------------------------------------------------------
+
+🛠️ Kullanılan Teknolojiler
+
+| Teknoloji                     | Kullanım                               |
+| ----------------------------- | -------------------------------------- |
+| **Next.js 13 App Router**     | Proje yapısı, server/client components |
+| **TypeScript**                | Tip güvenliği                          |
+| **TailwindCSS**               | UI tasarımı                            |
+| **i18n (JSON message files)** | Çoklu dil desteği                      |
+| **Local Storage / Mock Data** | Geçici veri yönetimi                   |
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+📁 Proje Yapısı
+
+yangin-envater-sistemi/
+│
+├── public/
+│   └── (statik dosyalar)
+│
+├── src/
+│   ├── app/
+│   │   ├── [locale]/
+│   │   │   ├── envanter/
+│   │   │   │   └── page.tsx
+│   │   │   ├── inventory/
+│   │   │   │   └── page.tsx
+│   │   │   ├── reporting/
+│   │   │   │   └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   │   └── favicon.ico
+│   │
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   └── NavbarWrapper.tsx
+│   │
+│   ├── messages/
+│   │   ├── en.json
+│   │   └── tr.json
+│   │
+│   └── i18n/
+│       └── request.ts
+│
+├── next.config.js
+├── next-intl.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── package.json
+├── tsconfig.json
+└── README.md
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+📸 Ekran Görselleri
+
+Ana Ekran
+Home
+
+Envanter Ekranları
+English	Türkçe
+
+	
+Raporlama Ekranları
+English	Türkçe
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+🔧 Kurulum ve Çalıştırma
+
+Repoyu klonla
+  git clone https://github.com/mehmetulucayy/yangin-envater-sistemi.git
+
+Bağımlılıkları kur
+  npm install
+
+Development modunda çalıştır
+  npm run dev
+
+--------------------------------------------------------------------------------------------------------------------------
+
+
+Dil Desteği (i18n)
+
+JSON dosyaları:
+
+/src/messages/en.json
+
+/src/messages/tr.json
+
+Dil, URL üzerinden belirlenir:

@@ -1,0 +1,66 @@
+{
+  "navbar": {
+    "title": "Fire Inventory System",
+    "home": "Home",
+    "inventory": "Inventory",
+    "reporting": "Reporting"
+  },
+  "home": {
+    "title": "Fire Inventory System",
+    "cards": {
+      "total": "Total Equipment",
+      "new": "New",
+      "used": "Used",
+      "maintenance": "Under Maintenance",
+      "unusable": "Unusable"
+    },
+    "upcoming": "Upcoming Maintenance (within 30 days)",
+    "none": "No equipment requires maintenance soon."
+  },
+  "inventory": {
+    "title": "Inventory Management",
+    "addEquipment": "Add New Equipment",
+    "addButton": "Add",
+    "listTitle": "Inventory List",
+    "noItems": "No equipment has been added yet.",
+    "exportPDF": "Export Report (PDF)",
+    "fields": {
+      "tupadi": "Cylinder Name",
+      "marka": "Brand",
+      "model": "Model",
+      "seriNo": "Serial No",
+      "uretimYili": "Production Year",
+      "sonKullanmaTarihi": "Expiry Date",
+      "bulunduguYer": "Location"
+    },
+    "status": {
+      "new": "New",
+      "used": "Used",
+      "maintenance": "Under Maintenance",
+      "unusable": "Unusable"
+    }
+  },
+  "reporting": {
+    "title": "Reporting",
+    "total": "Total Equipment",
+    "chartTitle": "Status Distribution",
+    "noData": "No data available.",
+    "exportPDF": "Export Report (PDF)",
+    "exportSuccess": "✅ PDF exported successfully (including charts).",
+    "statuses": {
+      "new": "New",
+      "used": "Used",
+      "maintenance": "Under Maintenance",
+      "unusable": "Unusable"
+    },
+    "charts": {
+      "addedPerMonth": "Items Added per Month",
+      "expiryTimeline": "Expiry Timeline",
+      "statusDistribution": "Status Distribution",
+      "brandDistribution": "Brand Distribution",
+      "locationDistribution": "Location Distribution",
+      "upcomingExpiries": "Upcoming Expiries"
+    }
+  },
+  "unknown": "Unspecified"
+}
