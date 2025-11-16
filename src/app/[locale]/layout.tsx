@@ -1,8 +1,8 @@
-// src/app/[locale]/layout.tsx (DÜZELTİLMİŞ HALİ)
+// src/app/[locale]/layout.tsx (İKİNCİ DÜZELTME DENEMESİ)
 
 import {NextIntlClientProvider} from 'next-intl';
-import {notFound} from 'next/navigation';
 import NavbarWrapper from '@/components/NavbarWrapper';
+import getMessages from '@/i18n/getMessages'; // Yeni fonksiyonu import edin
 import "../globals.css";
 
 export default async function LocaleLayout({
@@ -13,19 +13,12 @@ export default async function LocaleLayout({
   params: {locale: string};
 }) {
   
-  // 💥 Düzeltilen Satır: 'params' zaten senkron bir obje olduğu için
-  // 'await' ifadesi kaldırıldı. Bu, derleme hatanızı çözmelidir.
+  // Senkron erişim
   const {locale} = params; 
 
-  let messages;
-  try {
-    messages = (await import(`@/messages/${locale}.json`)).default;
-  } catch (error) {
-    console.warn(`Dil dosyası bulunamadı: ${locale}, varsayılan Türkçe yüklendi.`);
-    messages = (await import('@/messages/tr.json')).default;
-  }
-
-  if (!['tr', 'en'].includes(locale)) notFound();
+  // Mesajları ayrı fonksiyondan çekin
+  const messages = await getMessages(locale);
+  // getMessages fonksiyonu zaten notFound() kontrolünü içeriyor.
 
   return (
     <html lang={locale}>
