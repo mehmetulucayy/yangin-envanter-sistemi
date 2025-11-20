@@ -2,7 +2,7 @@ import tr from '../messages/tr.json';
 import en from '../messages/en.json';
 import { getRequestConfig } from 'next-intl/server';
 
-const messagesMap = { tr, en };
+export const messagesMap = { tr, en };
 
 const nextIntlConfig = getRequestConfig(({ locale }) => {
   const messages = messagesMap[locale] || tr;

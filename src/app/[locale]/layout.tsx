@@ -1,18 +1,18 @@
 import { NextIntlClientProvider } from 'next-intl';
 import NavbarWrapper from '@/components/NavbarWrapper';
 import "../globals.css";
+import nextIntlConfig from '@/i18n/request';
 
-export default async function LocaleLayout({
-  children,
-  params
-}: {
+type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+  params: { locale: string };
+};
 
-  // Mesajları al
-  const messages = (await import(`@/messages/${locale}.json`)).default;
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = params;
+
+  // nextIntlConfig kullanarak mesajları alıyoruz
+  const { messages } = await nextIntlConfig({ locale });
 
   return (
     <html lang={locale}>

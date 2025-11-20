@@ -4,10 +4,11 @@ import nextIntlConfig from './src/i18n/request';
 const withNextIntl = createNextIntlPlugin(nextIntlConfig);
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withNextIntl({
+const nextConfig = {
+  reactStrictMode: true,
   experimental: {
-    serverActions: {}, // boolean değil object olarak verilmeli
+    serverActions: true,
   },
-});
+};
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
