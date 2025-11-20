@@ -21,10 +21,23 @@ import autoTable from "jspdf-autotable";
 import html2canvas from "html2canvas";
 import { toast } from "sonner";
 
+// Type definitions for chart data
+type MonthlyData = { month: string; count: number };
+type ExpiryData = { month: string; count: number };
+type StatusData = { name: string; value: number; color: string };
+type BrandData = { name: string; value: number };
+type LocationData = { name: string; count: number };
+
 export default function RaporlamaPage() {
   const t = useTranslations("reporting");
   const [data, setData] = useState<any[]>([]);
-  const [charts, setCharts] = useState({
+  const [charts, setCharts] = useState<{
+    monthly: MonthlyData[];
+    expiry: ExpiryData[];
+    status: StatusData[];
+    brand: BrandData[];
+    location: LocationData[];
+  }>({
     monthly: [],
     expiry: [],
     status: [],
@@ -57,10 +70,10 @@ export default function RaporlamaPage() {
         x.durum === "Yeni"
           ? "new"
           : x.durum === "Kullanılmış"
-          ? "used"
-          : x.durum === "Bakımda"
-          ? "maintenance"
-          : "unusable",
+            ? "used"
+            : x.durum === "Bakımda"
+              ? "maintenance"
+              : "unusable",
       createdAt: x.createdAt || new Date().toISOString(),
     }));
 
@@ -96,7 +109,6 @@ export default function RaporlamaPage() {
       value: normalized.filter((i: any) => i.status === s).length,
       color: COLORS[s as keyof typeof COLORS],
     }));
-    
 
     const brandCounts: Record<string, number> = {};
     normalized.forEach((i: any) => {
@@ -123,7 +135,7 @@ export default function RaporlamaPage() {
 
   // 📄 PDF dışa aktarma
   const handleExportPDF = async () => {
-    const doc = new jsPDF({ encoding: "UTF-8", compress: true });
+    const doc = new jsPDF({ compress: true });
     doc.setFont("Helvetica", "normal");
 
     // Başlık
@@ -131,8 +143,7 @@ export default function RaporlamaPage() {
     doc.text("🔥 Yangın Envanter Sistemi Raporu", 14, 20);
     doc.setFontSize(12);
     doc.text(
-      `Tarih: ${new Date().toLocaleDateString("tr-TR")} | Toplam Ürün: ${
-        data.length
+      `Tarih: ${new Date().toLocaleDateString("tr-TR")} | Toplam Ürün: ${data.length
       }`,
       14,
       30
