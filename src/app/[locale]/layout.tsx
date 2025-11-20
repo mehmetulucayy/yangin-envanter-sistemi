@@ -2,16 +2,22 @@ import { NextIntlClientProvider } from 'next-intl';
 import NavbarWrapper from '@/components/NavbarWrapper';
 import "../globals.css";
 
-type Props = {
+export default async function LocaleLayout({
+  children,
+  params
+}: {
   children: React.ReactNode;
-  params: { locale: string };
-};
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
-export default function LocaleLayout({ children, params }: Props) {
+  // Mesajları al
+  const messages = (await import(`@/messages/${locale}.json`)).default;
+
   return (
-    <html lang={params.locale}>
+    <html lang={locale}>
       <body className="bg-gray-900 text-white">
-        <NextIntlClientProvider locale={params.locale}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <NavbarWrapper />
           <main className="p-6">{children}</main>
         </NextIntlClientProvider>
