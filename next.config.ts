@@ -1,5 +1,5 @@
 import createNextIntlPlugin from 'next-intl/plugin';
-import { nextIntlConfig } from './src/i18n/request';
+import nextIntlConfig from './src/i18n/request';
 
 const withNextIntl = createNextIntlPlugin(nextIntlConfig);
 
