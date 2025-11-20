@@ -2,6 +2,10 @@
 
 Modern ve kullanıcı dostu yangın söndürme ekipmanları envanter yönetim sistemi. Next.js 15, TypeScript ve Tailwind CSS ile geliştirilmiştir.
 
+## 🌐 Canlı Demo
+
+**[🚀 Uygulamayı Deneyin](https://yangin-envanter-sistemi-gsig-q56c1ddqp.vercel.app)**
+
 ## ✨ Özellikler
 
 ### 📊 Ana Sayfa
