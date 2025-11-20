@@ -1,129 +1,161 @@
-🔥 Yangın Envanter Takip Sistemi
+# 🔥 Yangın Envanter Sistemi
 
-Next.js + Tailwind CSS + i18n
+Modern ve kullanıcı dostu yangın söndürme ekipmanları envanter yönetim sistemi. Next.js 15, TypeScript ve Tailwind CSS ile geliştirilmiştir.
 
-Bu proje, kurum ve tesislerdeki yangın ekipmanlarının envanterini dijital olarak takip etmek, raporlamak ve çoklu dil desteği ile kullanıcı deneyimini geliştirmek için oluşturulmuş modern bir web uygulamasıdır.
+## ✨ Özellikler
 
-Next.js 13 App Router, TailwindCSS, TypeScript, i18n (TR/EN) ile geliştirilmiştir.
+### 📊 Ana Sayfa
+- **Anlık İstatistikler**: Toplam envanter, durum bazlı sayılar (Yeni, Kullanılmış, Bakımda, Kullanılamaz)
+- **Yaklaşan Bakımlar**: 30 gün içinde son kullanma tarihi dolacak ekipmanların listesi
+- **Responsive Tasarım**: Mobil, tablet ve masaüstü uyumlu
 
---------------------------------------------------------------------------------------------------------------------------
+### 📦 Envanter Yönetimi
+- **Ekipman Ekleme**: Detaylı form ile yeni ekipman kaydı
+- **Tablo Görünümü**: Tüm ekipmanları düzenli tabloda görüntüleme
+- **Silme İşlemi**: Onay ile güvenli silme
+- **LocalStorage**: Veriler tarayıcıda güvenle saklanır
 
-🚀 Özellikler
+### 📈 Raporlama
+- **Grafikler**:
+  - Aylık eklenen ürünler (Bar Chart)
+  - Son kullanma tarihi dağılımı (Line Chart)
+  - Durum dağılımı (Pie Chart)
+- **PDF Export**: Tüm veriler ve grafiklerle birlikte PDF olarak indirilebilir
+- **Türkçe Karakter Desteği**: PDF'de Türkçe karakterler düzgün görüntülenir
 
-Envanter Listeleme (En/Tr dil desteği)
+### 🌍 Çoklu Dil Desteği
+- **Türkçe** 🇹🇷
+- **İngilizce** 🇺🇸
+- Dinamik dil değiştirme (URL tabanlı routing)
+- Tüm sayfalarda tam çeviri desteği
 
-Yangın ekipmanı veri yönetimi
+## 🚀 Teknolojiler
 
-Modern UI (Tailwind + Next.js)
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Dil**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **i18n**: [next-intl](https://next-intl-docs.vercel.app/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **PDF**: [jsPDF](https://github.com/parallax/jsPDF) + [jspdf-autotable](https://github.com/simonbengtsson/jsPDF-AutoTable)
+- **Canvas**: [html2canvas](https://html2canvas.hertzen.com/)
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/)
 
-Reporting Sayfası (Grafik bazlı)
+## 📦 Kurulum
 
-Sayfa bazlı çoklu dil desteği (i18n)
+### Gereksinimler
+- Node.js 18+ 
+- npm veya yarn
 
-Tamamen local çalışan demo
+### Adımlar
 
-Dark tema tasarım
+1. **Projeyi klonlayın**:
+```bash
+git clone https://github.com/mehmetulucayy/yangin-envanter-sistemi.git
+cd yangin-envanter-sistemi
+```
 
-App Router yapısı (Next.js 13/14)
+2. **Bağımlılıkları yükleyin**:
+```bash
+npm install
+```
 
---------------------------------------------------------------------------------------------------------------------------
+3. **Geliştirme sunucusunu başlatın**:
+```bash
+npm run dev
+```
 
-🛠️ Kullanılan Teknolojiler
+4. **Tarayıcıda açın**:
+```
+http://localhost:3000
+```
 
-| Teknoloji                     | Kullanım                               |
-| ----------------------------- | -------------------------------------- |
-| **Next.js 13 App Router**     | Proje yapısı, server/client components |
-| **TypeScript**                | Tip güvenliği                          |
-| **TailwindCSS**               | UI tasarımı                            |
-| **i18n (JSON message files)** | Çoklu dil desteği                      |
-| **Local Storage / Mock Data** | Geçici veri yönetimi                   |
+## 🏗️ Build
 
+Production build oluşturmak için:
 
---------------------------------------------------------------------------------------------------------------------------
+```bash
+npm run build
+npm start
+```
 
+## 📁 Proje Yapısı
 
-📁 Proje Yapısı
+```
+src/
+├── app/
+│   ├── [locale]/           # Dil bazlı routing
+│   │   ├── page.tsx        # Ana sayfa
+│   │   ├── layout.tsx      # Layout wrapper
+│   │   ├── inventory/      # Envanter sayfası
+│   │   └── reporting/      # Raporlama sayfası
+│   └── globals.css         # Global stiller
+├── components/
+│   ├── Navbar.tsx          # Navigation bar
+│   └── NavbarWrapper.tsx   # Client wrapper
+├── i18n/
+│   ├── config.ts           # i18n konfigürasyonu
+│   ├── request.ts          # Server-side i18n
+│   └── routing.ts          # Routing konfigürasyonu
+└── messages/
+    ├── tr.json             # Türkçe çeviriler
+    └── en.json             # İngilizce çeviriler
+```
 
-yangin-envater-sistemi/
-│
-├── public/
-│   └── (statik dosyalar)
-│
-├── src/
-│   ├── app/
-│   │   ├── [locale]/
-│   │   │   ├── envanter/
-│   │   │   │   └── page.tsx
-│   │   │   ├── inventory/
-│   │   │   │   └── page.tsx
-│   │   │   ├── reporting/
-│   │   │   │   └── page.tsx
-│   │   │   ├── layout.tsx
-│   │   │   └── page.tsx
-│   │   └── favicon.ico
-│   │
-│   ├── components/
-│   │   ├── Navbar.tsx
-│   │   └── NavbarWrapper.tsx
-│   │
-│   ├── messages/
-│   │   ├── en.json
-│   │   └── tr.json
-│   │
-│   └── i18n/
-│       └── request.ts
-│
-├── next.config.js
-├── next-intl.config.js
-├── tailwind.config.js
-├── postcss.config.js
-├── package.json
-├── tsconfig.json
-└── README.md
+## 🌐 Dil Değiştirme
 
+Sistem otomatik olarak URL tabanlı dil yönetimi kullanır:
 
---------------------------------------------------------------------------------------------------------------------------
+- Türkçe: `https://your-domain.com/tr`
+- İngilizce: `https://your-domain.com/en`
 
-📸 Ekran Görselleri
+Navbar'daki dil değiştirme butonu ile kolayca geçiş yapabilirsiniz.
 
-Ana Ekran
-Home
-  public/screenshots/home.png
+## 💾 Veri Saklama
 
-Envanter Ekranları
-	public/screenshots/envanter-tr.png
-  public/screenshots/envanter-en.png
+Veriler tarayıcının **localStorage**'ında saklanır. Bu sayede:
+- ✅ Sunucu gerektirmez
+- ✅ Hızlı erişim
+- ✅ Offline çalışma
+- ⚠️ Tarayıcı verisi silinirse kaybolur
 
-Raporlama Ekranları
+## 📸 Ekran Görüntüleri
 
-  public/screenshots/raporlama-tr.png
-  public/screenshots/raporlama-en.png
+### Ana Sayfa
+- İstatistik kartları
+- Yaklaşan bakımlar tablosu
 
-English	Türkçe
+### Envanter Yönetimi
+- Ekipman ekleme formu
+- Detaylı envanter tablosu
 
---------------------------------------------------------------------------------------------------------------------------
+### Raporlama
+- İnteraktif grafikler
+- PDF export özelliği
 
+## 🤝 Katkıda Bulunma
 
-🔧 Kurulum ve Çalıştırma
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Commit edin (`git commit -m 'feat: Add amazing feature'`)
+4. Push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
 
-Repoyu klonla
-  git clone https://github.com/mehmetulucayy/yangin-envater-sistemi.git
+## 📝 Lisans
 
-Bağımlılıkları kur
-  npm install
+Bu proje MIT lisansı altında lisanslanmıştır.
 
-Development modunda çalıştır
-  npm run dev
+## 👨‍💻 Geliştirici
 
---------------------------------------------------------------------------------------------------------------------------
+**Mehmet Uluçay**
 
+- GitHub: [@mehmetulucayy](https://github.com/mehmetulucayy)
 
-Dil Desteği (i18n)
+## 🙏 Teşekkürler
 
-JSON dosyaları:
+- [Next.js](https://nextjs.org/) ekibine
+- [Vercel](https://vercel.com/) hosting için
+- Tüm açık kaynak katkıda bulunanlara
 
-/src/messages/en.json
+---
 
-/src/messages/tr.json
-
-Dil, URL üzerinden belirlenir:
+⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!
