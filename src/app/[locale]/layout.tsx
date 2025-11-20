@@ -13,7 +13,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   // Mesajları sunucu tarafında güvenli şekilde çekiyoruz
   const messages = await getMessages();
-
+  // hamza
   return (
     <html lang={locale}>
       <body className="bg-gray-900 text-white min-h-screen">
