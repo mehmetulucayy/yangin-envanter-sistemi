@@ -1,6 +1,6 @@
-import { defineConfig } from 'next-intl/config';
+// src/i18n/config.ts
+// Locale configuration
+export const locales = ['tr', 'en'] as const;
+export const defaultLocale = 'tr' as const;
 
-export default defineConfig({
-  locales: ['tr', 'en'],
-  defaultLocale: 'tr'
-});
+export type Locale = (typeof locales)[number];
