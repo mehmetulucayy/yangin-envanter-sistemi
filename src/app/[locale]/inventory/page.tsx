@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 
-// Tip tanımlamasını yapalım (Kodunuzdaki "any[]" yerine daha temiz olur)
 interface EnvanterKaydi {
   id: number;
   tupadi: string;
@@ -29,17 +28,14 @@ const initialFormState: Omit<EnvanterKaydi, 'id'> = {
 
 export default function InventoryPage() {
   const t = useTranslations("inventory");
-
   const [envanterListesi, setEnvanterListesi] = useState<EnvanterKaydi[]>([]);
   const [form, setForm] = useState(initialFormState);
 
-  // --- LOCAL STORAGE & INIT ---
   useEffect(() => {
     const kayitlar = localStorage.getItem("envanterListesi");
     if (kayitlar) setEnvanterListesi(JSON.parse(kayitlar));
   }, []);
 
-  // --- HANDLERS ---
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -49,10 +45,9 @@ export default function InventoryPage() {
     const yeni = [...envanterListesi, { id: Date.now(), ...form }];
     setEnvanterListesi(yeni);
     localStorage.setItem("envanterListesi", JSON.stringify(yeni));
-    setForm(initialFormState); // Formu temizle
+    setForm(initialFormState);
   };
 
-  // ✅ YENİ İŞLEV: Kayıt Silme
   const handleDelete = (id: number) => {
     if (confirm(t("confirmDelete"))) {
       const yeni = envanterListesi.filter(item => item.id !== id);
@@ -61,28 +56,23 @@ export default function InventoryPage() {
     }
   };
 
-  // ✅ Yardımcı Fonksiyon: Durum Çevirisi
   const getStatusTranslation = (durumKey: string) => {
-    // Örneğin, 'New' key'i için 'status.new' çevirisini çağırır.
-    return t(`status.${durumKey.toLowerCase()}`); 
+    return t(`status.${durumKey.toLowerCase()}`);
   };
-  
-  // --- JSX RENDER ---
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold text-white mb-10 text-center">{t("title")}</h1>
 
-      {/* Form Bölümü (Değişiklik Yok) */}
       <form
         onSubmit={handleSubmit}
         className="bg-[#1C1F26] p-8 rounded-2xl shadow-lg border border-[#2C3240] mb-12"
       >
-        {/* ... (Form inputları ve butonları aynı) ... */}
         <h2 className="text-xl font-semibold text-gray-200 mb-6 border-b border-gray-700 pb-3">
           {t("addEquipment")}
         </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6"> {/* Sütun sayısı 4 yapıldı */}
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <input name="tupadi" placeholder={t("fields.tupadi")} value={form.tupadi} onChange={handleChange} className="p-3 rounded-lg bg-[#2A303C] text-white w-full focus:outline-none focus:ring-2 focus:ring-blue-500" required />
           <input name="marka" placeholder={t("fields.marka")} value={form.marka} onChange={handleChange} className="p-3 rounded-lg bg-[#2A303C] text-white w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <input name="model" placeholder={t("fields.model")} value={form.model} onChange={handleChange} className="p-3 rounded-lg bg-[#2A303C] text-white w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -97,7 +87,7 @@ export default function InventoryPage() {
             <option value="Unusable">{t("status.unusable")}</option>
           </select>
         </div>
-        
+
         <div className="flex justify-end">
           <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-lg shadow-md transition-all">
             {t("addButton")}
@@ -105,8 +95,6 @@ export default function InventoryPage() {
         </div>
       </form>
 
-
-      {/* ✅ YENİ: Liste yerine Tablo */}
       <div className="bg-[#1C1F26] p-8 rounded-2xl shadow-lg border border-[#2C3240] overflow-x-auto">
         <h2 className="text-xl font-semibold text-gray-200 mb-6 border-b border-gray-700 pb-3">
           {t("listTitle")}
@@ -123,7 +111,7 @@ export default function InventoryPage() {
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t("fields.uretimYili")}</th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t("fields.sonKullanmaTarihi")}</th>
                 <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">{t("fields.durum")}</th>
-                <th className="px-4 py-3"></th> {/* Silme butonu için boş sütun */}
+                <th className="px-4 py-3"></th>
               </tr>
             </thead>
             <tbody className="bg-[#1C1F26] divide-y divide-gray-800">

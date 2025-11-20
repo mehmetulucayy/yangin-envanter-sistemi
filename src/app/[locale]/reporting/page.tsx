@@ -28,6 +28,19 @@ type StatusData = { name: string; value: number; color: string };
 type BrandData = { name: string; value: number };
 type LocationData = { name: string; count: number };
 
+// Türkçe karakterleri ASCII'ye çevir
+const turkishToAscii = (str: string): string => {
+  const map: Record<string, string> = {
+    'ç': 'c', 'Ç': 'C',
+    'ğ': 'g', 'Ğ': 'G',
+    'ı': 'i', 'İ': 'I',
+    'ö': 'o', 'Ö': 'O',
+    'ş': 's', 'Ş': 'S',
+    'ü': 'u', 'Ü': 'U',
+  };
+  return str.replace(/[çÇğĞıİöÖşŞüÜ]/g, letter => map[letter] || letter);
+};
+
 export default function RaporlamaPage() {
   const t = useTranslations("reporting");
   const [data, setData] = useState<any[]>([]);
@@ -136,15 +149,13 @@ export default function RaporlamaPage() {
   // 📄 PDF dışa aktarma
   const handleExportPDF = async () => {
     const doc = new jsPDF({ compress: true });
-    doc.setFont("Helvetica", "normal");
 
     // Başlık
     doc.setFontSize(18);
-    doc.text("🔥 Yangın Envanter Sistemi Raporu", 14, 20);
+    doc.text(turkishToAscii("Yangin Envanter Sistemi Raporu"), 14, 20);
     doc.setFontSize(12);
     doc.text(
-      `Tarih: ${new Date().toLocaleDateString("tr-TR")} | Toplam Ürün: ${data.length
-      }`,
+      turkishToAscii(`Tarih: ${new Date().toLocaleDateString("tr-TR")} | Toplam Urun: ${data.length}`),
       14,
       30
     );
@@ -152,14 +163,14 @@ export default function RaporlamaPage() {
     // Tablo
     autoTable(doc, {
       startY: 40,
-      styles: { font: "Helvetica", fontStyle: "normal", halign: "center" },
-      head: [["Tüp Adı", "Marka", "Durum", "Son Kullanma", "Lokasyon"]],
+      styles: { halign: "center" },
+      head: [[turkishToAscii("Tup Adi"), turkishToAscii("Marka"), turkishToAscii("Durum"), turkishToAscii("Son Kullanma"), turkishToAscii("Lokasyon")]],
       body: data.map((x) => [
-        x.name,
-        x.brand,
-        t(`statuses.${x.status}`),
+        turkishToAscii(x.name),
+        turkishToAscii(x.brand),
+        turkishToAscii(t(`statuses.${x.status}`)),
         x.expiryDate || "-",
-        x.location,
+        turkishToAscii(x.location),
       ]),
     });
 

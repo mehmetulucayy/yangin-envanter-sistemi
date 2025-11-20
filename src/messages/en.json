@@ -15,7 +15,14 @@
       "unusable": "Unusable"
     },
     "upcoming": "Upcoming Maintenance (within 30 days)",
-    "none": "No equipment requires maintenance soon."
+    "none": "No equipment requires maintenance soon.",
+    "table": {
+      "cylinder": "Cylinder",
+      "brand": "Brand",
+      "serialNo": "Serial No",
+      "expiry": "Expiry Date",
+      "status": "Status"
+    }
   },
   "inventory": {
     "title": "Inventory Management",
@@ -24,13 +31,11 @@
     "listTitle": "Inventory List",
     "noItems": "No equipment has been added yet.",
     "exportPDF": "Export Report (PDF)",
-    
     "deleteButton": "Delete",
     "confirmDelete": "Are you sure you want to delete this item?",
     "editButton": "Edit",
     "detailTitle": "Equipment Detail",
     "loading": "Loading...",
-    
     "fields": {
       "tupadi": "Cylinder Name",
       "marka": "Brand",

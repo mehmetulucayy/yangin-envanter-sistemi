@@ -1,13 +1,15 @@
 // src/i18n/request.ts
-import tr from '../messages/tr.json';
-import en from '../messages/en.json';
 import { getRequestConfig } from 'next-intl/server';
+import { routing } from './routing';
 
-const messagesMap = { tr, en };
+export default getRequestConfig(async ({ locale }) => {
+  // Validate that the incoming `locale` parameter is valid
+  if (!routing.locales.includes(locale as any)) {
+    locale = routing.defaultLocale;
+  }
 
-const nextIntlConfig = getRequestConfig(({ locale }) => {
-  const messages = messagesMap[locale] || tr;
-  return { locale: locale || 'tr', messages };
+  return {
+    locale,
+    messages: (await import(`../messages/${locale}.json`)).default
+  };
 });
-
-export default nextIntlConfig; // default export olmalı

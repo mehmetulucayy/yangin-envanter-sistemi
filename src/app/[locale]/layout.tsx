@@ -11,8 +11,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Next.js 15 kuralı: params'ı await ediyoruz
   const { locale } = await params;
 
-  // Mesajları sunucu tarafında güvenli şekilde çekiyoruz
-  const messages = await getMessages();
+  // Mesajları locale parametresiyle çekiyoruz
+  const messages = await getMessages({ locale });
   // hamza
   return (
     <html lang={locale}>

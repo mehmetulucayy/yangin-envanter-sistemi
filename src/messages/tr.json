@@ -15,7 +15,14 @@
       "unusable": "Kullanılamaz"
     },
     "upcoming": "Yaklaşan Bakımlar (30 Gün İçinde)",
-    "none": "Yaklaşan bakım gerektiren ekipman bulunmuyor."
+    "none": "Yaklaşan bakım gerektiren ekipman bulunmuyor.",
+    "table": {
+      "cylinder": "Tüp",
+      "brand": "Marka",
+      "serialNo": "Seri No",
+      "expiry": "Son Kullanma",
+      "status": "Durum"
+    }
   },
   "inventory": {
     "title": "Envanter Yönetimi",
@@ -24,13 +31,11 @@
     "listTitle": "Envanter Listesi",
     "noItems": "Henüz ekipman eklenmedi.",
     "exportPDF": "Raporu Dışa Aktar (PDF)",
-    
     "deleteButton": "Sil",
     "confirmDelete": "Bu öğeyi silmek istediğinizden emin misiniz?",
     "editButton": "Düzenle",
     "detailTitle": "Ekipman Detayı",
     "loading": "Yükleniyor...",
-    
     "fields": {
       "tupadi": "Tüp Adı",
       "marka": "Marka",

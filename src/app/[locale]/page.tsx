@@ -1,7 +1,7 @@
 'use client';
 
-import {useEffect, useMemo, useState} from 'react';
-import {useTranslations} from 'next-intl';
+import { useEffect, useMemo, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type Item = {
   id: number;
@@ -30,7 +30,7 @@ export default function AnaSayfa() {
     const countUsed = envanter.filter(x => x.durum === 'Kullanılmış').length;
     const countMaint = envanter.filter(x => x.durum === 'Bakımda').length;
     const countBad = envanter.filter(x => x.durum === 'Kullanılamaz').length;
-    return {total, countNew, countUsed, countMaint, countBad};
+    return { total, countNew, countUsed, countMaint, countBad };
   }, [envanter]);
 
   const upcoming = useMemo(() => {
@@ -64,24 +64,24 @@ export default function AnaSayfa() {
         {upcoming.length === 0 ? (
           <p className="text-gray-400 italic">{t('none')}</p>
         ) : (
-          <table className="w-full text-sm">
+          <table className="w-full text-sm table-fixed">
             <thead>
               <tr className="text-left text-gray-300">
-                <th className="py-2 pr-4">Tüp</th>
-                <th className="py-2 pr-4">Marka</th>
-                <th className="py-2 pr-4">Seri No</th>
-                <th className="py-2 pr-4">Son Kullanma</th>
-                <th className="py-2 pr-4">Durum</th>
+                <th className="py-2 pr-4 w-1/5">{t('table.cylinder')}</th>
+                <th className="py-2 pr-4 w-1/5">{t('table.brand')}</th>
+                <th className="py-2 pr-4 w-1/5">{t('table.serialNo')}</th>
+                <th className="py-2 pr-4 w-1/5">{t('table.expiry')}</th>
+                <th className="py-2 pr-4 w-1/5">{t('table.status')}</th>
               </tr>
             </thead>
             <tbody>
               {upcoming.map(e => (
                 <tr key={e.id} className="border-t border-gray-800">
-                  <td className="py-2 pr-4">{e.tupadi}</td>
-                  <td className="py-2 pr-4">{e.marka}</td>
-                  <td className="py-2 pr-4">{e.seriNo}</td>
-                  <td className="py-2 pr-4">{e.sonKullanmaTarihi}</td>
-                  <td className="py-2 pr-4">{e.durum}</td>
+                  <td className="py-2 pr-4 w-1/5 truncate">{e.tupadi}</td>
+                  <td className="py-2 pr-4 w-1/5 truncate">{e.marka}</td>
+                  <td className="py-2 pr-4 w-1/5 truncate">{e.seriNo}</td>
+                  <td className="py-2 pr-4 w-1/5 truncate">{e.sonKullanmaTarihi}</td>
+                  <td className="py-2 pr-4 w-1/5 truncate">{e.durum}</td>
                 </tr>
               ))}
             </tbody>
@@ -92,7 +92,7 @@ export default function AnaSayfa() {
   );
 }
 
-function Card({title, value}: {title: string; value: number}) {
+function Card({ title, value }: { title: string; value: number }) {
   return (
     <div className="bg-[#1C1F26] border border-gray-800 rounded-lg p-6 text-center">
       <div className="text-gray-300 mb-2">{title}</div>
