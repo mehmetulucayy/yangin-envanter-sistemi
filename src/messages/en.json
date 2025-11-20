@@ -24,6 +24,13 @@
     "listTitle": "Inventory List",
     "noItems": "No equipment has been added yet.",
     "exportPDF": "Export Report (PDF)",
+    
+    "deleteButton": "Delete",
+    "confirmDelete": "Are you sure you want to delete this item?",
+    "editButton": "Edit",
+    "detailTitle": "Equipment Detail",
+    "loading": "Loading...",
+    
     "fields": {
       "tupadi": "Cylinder Name",
       "marka": "Brand",
@@ -31,7 +38,8 @@
       "seriNo": "Serial No",
       "uretimYili": "Production Year",
       "sonKullanmaTarihi": "Expiry Date",
-      "bulunduguYer": "Location"
+      "bulunduguYer": "Location",
+      "durum": "Status"
     },
     "status": {
       "new": "New",

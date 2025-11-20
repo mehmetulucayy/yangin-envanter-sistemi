@@ -1,13 +1,18 @@
 import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import NavbarWrapper from '@/components/NavbarWrapper';
-import nextIntlConfig from '@/i18n/request';
-import '../globals.css'; 
-import type { LayoutProps } from 'next/dist/lib/app-router-context';
+import '../globals.css';
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>; // Next.js 15'te burası Promise olmak zorunda
+};
 
-export default async function LocaleLayout({ children, params }: LayoutProps<'/[locale]'>) {
-  const { locale } = params;
+export default async function LocaleLayout({ children, params }: Props) {
+  // Next.js 15 kuralı: params'ı await ediyoruz
+  const { locale } = await params;
 
-  const { messages } = await nextIntlConfig({ locale });
+  // Mesajları sunucu tarafında güvenli şekilde çekiyoruz
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>

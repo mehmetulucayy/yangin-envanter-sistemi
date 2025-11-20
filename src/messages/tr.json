@@ -24,6 +24,13 @@
     "listTitle": "Envanter Listesi",
     "noItems": "Henüz ekipman eklenmedi.",
     "exportPDF": "Raporu Dışa Aktar (PDF)",
+    
+    "deleteButton": "Sil",
+    "confirmDelete": "Bu öğeyi silmek istediğinizden emin misiniz?",
+    "editButton": "Düzenle",
+    "detailTitle": "Ekipman Detayı",
+    "loading": "Yükleniyor...",
+    
     "fields": {
       "tupadi": "Tüp Adı",
       "marka": "Marka",
@@ -31,7 +38,8 @@
       "seriNo": "Seri No",
       "uretimYili": "Üretim Yılı",
       "sonKullanmaTarihi": "Son Kullanma Tarihi",
-      "bulunduguYer": "Bulunduğu Yer"
+      "bulunduguYer": "Bulunduğu Yer",
+      "durum": "Durum"
     },
     "status": {
       "new": "Yeni",

@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
-import {useLocale, useTranslations} from 'next-intl';
-import {usePathname, useRouter} from 'next/navigation';
+// Yönlendirme için kendi oluşturduğumuz routing dosyasından import ediyoruz
+import { Link, usePathname, useRouter } from '@/i18n/routing'; 
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Navbar() {
   const t = useTranslations('navbar');
@@ -10,25 +10,10 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
-  // TR<->EN aynı sayfada kal, yalnızca locale + segment çevir
   const handleSwitch = () => {
-    // rota çeviri eşlemesi
-      const map: Record<string, string> = {
-      '/envanter': '/inventory',
-      '/inventory': '/envanter'
-    };
-
-
-    // locale’i değiştir
-    let next = pathname.replace(/^\/(tr|en)/, `/${locale === 'tr' ? 'en' : 'tr'}`);
-
-    // segment çevirisi gerekiyorsa uygula
-    for (const [tr, en] of Object.entries(map)) {
-      if (locale === 'tr' && pathname.includes(tr)) next = next.replace(tr, en);
-      if (locale === 'en' && pathname.includes(en)) next = next.replace(en, tr);
-    }
-
-    router.push(next);
+    const nextLocale = locale === 'tr' ? 'en' : 'tr';
+    // Bu metod, URL ön ekini (/tr -> /en) ve yolu (/envanter -> /inventory) otomatik değiştirir.
+    router.replace(pathname, { locale: nextLocale });
   };
 
   return (
@@ -40,27 +25,24 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-6">
-          <Link className="hover:text-yellow-300" href={`/${locale}`}>
+          <Link className="hover:text-yellow-300" href="/">
             {t('home')}
           </Link>
-          <Link
-            className="hover:text-yellow-300"
-            href={`/${locale}/${locale === 'tr' ? 'envanter' : 'inventory'}`}
-          >
+          
+          {/* Link olarak routing.ts'de tanımlanan anahtarı (klasör adını) kullanıyoruz */}
+          <Link className="hover:text-yellow-300" href="/inventory">
             {t('inventory')}
           </Link>
-          <Link
-            className="hover:text-yellow-300"
-            href={`/${locale}/reporting`}
-          >
+          
+          <Link className="hover:text-yellow-300" href="/reporting">
             {t('reporting')}
           </Link>
 
           <button
             onClick={handleSwitch}
-            className="bg-gray-800 px-3 py-1 rounded hover:bg-gray-700"
+            className="bg-gray-800 px-3 py-1 rounded hover:bg-gray-700 text-white border border-gray-700"
           >
-            {locale === 'tr' ? 'EN' : 'TR'}
+            {locale === 'tr' ? '🇺🇸 EN' : '🇹🇷 TR'}
           </button>
         </div>
       </div>

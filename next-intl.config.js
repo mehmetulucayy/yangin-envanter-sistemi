@@ -1,3 +1,4 @@
+// next-intl.config.js (DOĞRU VE SON VERSİYON)
 module.exports = {
   locales: ["tr", "en"],
   defaultLocale: "tr",
@@ -12,7 +13,7 @@ module.exports = {
       en: "/inventory",
     },
     "/reporting": {
-      tr: "/reporting",
+      tr: "/raporlama", // ✅ DÜZELTİLDİ
       en: "/reporting",
     },
   },
